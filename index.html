@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png" />
+  <title>Frontend Mentor | E-commerce product page</title>
+  <link href="style.css" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@100..900&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<main>
+<div class="container">
+<!-- ===================== NAVIGATION ===================== -->
+<div class="nav">
+  <div class="right">
+    <button aria-controls="main-menu" aria-expanded="false" aria-label="Toggle navigation menu" class="menu-btn">
+<!-- hamburger icon (shown by default) -->
+<img alt="menu icon" class="icon-menu" height="17" src="images/icon-menu.svg" width="40"/>
+<!-- close icon (shown when open) -->
+</button>
+    <img class="logo" src="images/logo.svg" alt="sneakers" />
+
+    <div class="links" id="main-menu" role="menu">
+      <button aria-label="Close menu" class="panel-close">
+      <img alt="close" height="31" src="images/icon-close.svg" width="32"/>
+      </button>
+      <a href="#collections" class="anc">Collections</a>
+      <a href="#men" class="anc">Men</a>
+      <a href="#women" class="anc">Women</a>
+      <a href="#about" class="anc">About</a>
+      <a href="#contacts" class="anc">Contact</a>
+    </div>
+  </div>
+
+  <div class="icons">
+
+  <div class="cart-wrapper">
+    <div class="cart-icon" id="cartIcon" role="button" tabindex="0"
+         aria-haspopup="true" aria-expanded="false">
+      <img class="cart" src="images/icon-cart.svg" alt="cart" />
+      <div class="cart-count" id="cartCount">0</div>
+    </div>
+
+    <div class="cart-dropdown" id="cartDropdown"
+         role="dialog"
+         aria-hidden="true"
+         aria-label="Shopping cart">
+      <h3>Cart</h3>
+      <div id="cartContent">Your cart is empty.</div>
+    </div>
+  </div>
+
+  <img class="avatar" src="images/image-avatar.png" alt="avatar" />
+</div>
+
+</div>
+<div class="every">
+<!-- ===================== PRODUCT IMAGES ===================== -->
+<div class="containant">
+
+  <div class="mySlide">
+    <img src="images/image-product-1.jpg"
+         alt="Sneaker image 1"
+         onclick="openModal();currentSlide(1)">
+  </div>
+
+  <div class="mySlide">
+    <img src="images/image-product-2.jpg"
+         alt="Sneaker image 2"
+         onclick="openModal();currentSlide(2)">
+  </div>
+
+  <div class="mySlide">
+    <img src="images/image-product-3.jpg"
+         alt="Sneaker image 3"
+         onclick="openModal();currentSlide(3)">
+  </div>
+
+  <div class="mySlide">
+    <img src="images/image-product-4.jpg"
+         alt="Sneaker image 4"
+         onclick="openModal();currentSlide(4)">
+  </div>
+ <a class="previ" onclick="plusSlides(-1)" role="button" aria-label="Previous image">&#10094;</a>
+    <a class="nexts" onclick="plusSlides(1)" role="button" aria-label="Next image">&#10095;</a>
+</div>
+
+<!-- Thumbnails -->
+<div class="row">
+  <div class="column">
+    <img src="images/image-product-1-thumbnail.jpg" alt="Sneaker thumbnail 1" onclick="currentSlide(1)" class="hover-shadow">
+  </div>
+  <div class="column">
+    <img src="images/image-product-2-thumbnail.jpg" alt="Sneaker thumbnail 2" onclick="currentSlide(2)" class="hover-shadow">
+  </div>
+  <div class="column">
+    <img src="images/image-product-3-thumbnail.jpg" alt="Sneaker thumbnail 3" onclick="currentSlide(3)" class="hover-shadow">
+  </div>
+  <div class="column">
+    <img src="images/image-product-4-thumbnail.jpg" alt="Sneaker thumbnail 4" onclick="currentSlide(4)" class="hover-shadow">
+  </div>
+</div>
+</div>
+
+<!-- ===================== LIGHTBOX MODAL ===================== -->
+<div id="myModal" class="modal" role="dialog" aria-hidden="true" aria-label="Product image viewer">
+
+  <span class="close" id="closeLightbox" role="button" tabindex="0" aria-label="Close image viewer" onclick="closeModal()">&times;</span>
+
+  <div class="modal-content">
+
+    <div class="mySlides">
+      <div class="numbertext">1 / 4</div>
+      <img src="images/image-product-1.jpg" alt="Sneaker image 1">
+    </div>
+
+    <div class="mySlides">
+      <div class="numbertext">2 / 4</div>
+      <img src="images/image-product-2.jpg" alt="Sneaker image 2">
+    </div>
+
+    <div class="mySlides">
+      <div class="numbertext">3 / 4</div>
+      <img src="images/image-product-3.jpg" alt="Sneaker image 3">
+    </div>
+
+    <div class="mySlides">
+      <div class="numbertext">4 / 4</div>
+      <img src="images/image-product-4.jpg" alt="Sneaker image 4">
+    </div>
+
+    <a class="prev" onclick="plusLightboxSlides(-1)" role="button" aria-label="Previous image">&#10094;</a>
+    <a class="next" onclick="plusLightboxSlides(1)" role="button" aria-label="Next image">&#10095;</a>
+
+    <div class="column">
+      <img class="demo" src="images/image-product-1-thumbnail.jpg" onclick="currentLightboxSlide(1)" alt="Thumbnail 1">
+    </div>
+    <div class="column">
+      <img class="demo" src="images/image-product-2-thumbnail.jpg" onclick="currentLightboxSlide(2)" alt="Thumbnail 2">
+    </div>
+    <div class="column">
+      <img class="demo" src="images/image-product-3-thumbnail.jpg" onclick="currentLightboxSlide(3)" alt="Thumbnail 3">
+    </div>
+    <div class="column">
+      <img class="demo" src="images/image-product-4-thumbnail.jpg" onclick="currentLightboxSlide(4)" alt="Thumbnail 4">
+    </div>
+
+  </div>
+</div>
+
+<!-- ===================== TEXT / PRODUCT DESCRIPTION ===================== -->
+<div class="text">
+
+  <h3>Sneaker Company</h3>
+  <h1>Fall Limited Edition Sneakers</h1>
+
+  <p class="par">These low-profile sneakers are your perfect casual wear companion. Featuring a
+    durable rubber outer sole, they’ll withstand everything the weather can offer.</p>
+
+  <div class="no">
+    <p class="price">$125.00</p>
+    <p class="percent">50%</p>
+  </div>
+
+  <p class="cut">$250.00</p>
+
+  <!-- Quantity + Add to Cart -->
+  <div class="select">
+
+    <div class="counter-box">
+      <img class="minus" src="images/icon-minus.svg" role="button" tabindex="0" aria-label="Decrease quantity" alt="minus" />
+      <div class="quantity" aria-live="polite">0</div>
+      <img class="plus" src="images/icon-plus.svg" role="button" tabindex="0" aria-label="Increase quantity" alt="add" />
+    </div>
+    <div class="btn">
+    <button class="add-btn" id="addToCart" type="button" aria-label="Add item to cart">
+      <svg width="22" height="20" xmlns="http://www.w3.org/2000/svg"><path d="M20.925 3.641H3.863L3.61.816A.896.896 0 0 0 2.717 0H.897a.896.896 0 1 0 0 1.792h1l1.031 11.483c.073.828.52 1.726 1.291 2.336C2.83 17.385 4.099 20 6.359 20c1.875 0 3.197-1.87 2.554-3.642h4.905c-.642 1.77.677 3.642 2.555 3.642a2.72 2.72 0 0 0 2.717-2.717 2.72 2.72 0 0 0-2.717-2.717H6.365c-.681 0-1.274-.41-1.53-1.009l14.321-.842a.896.896 0 0 0 .817-.677l1.821-7.283a.897.897 0 0 0-.87-1.114ZM6.358 18.208a.926.926 0 0 1 0-1.85.926.926 0 0 1 0 1.85Zm10.015 0a.926.926 0 0 1 0-1.85.926.926 0 0 1 0 1.85Zm2.021-7.243-13.8.81-.57-6.341h15.753l-1.383 5.53Z" fill="hsl(220, 13%, 13%)" fill-rule="nonzero"/></svg>
+      Add to cart
+    </button>
+    </div>
+  </div>
+
+</div>
+
+</div> <!-- END .container -->
+<div class="attribution">
+  Challenge by <a href="https://www.frontendmentor.io" target="_blank">Frontend Mentor</a>.
+  Coded by <a href="#"><img alt="I.T.P logo" src="images/TPMono.png" /> I.T.P</a>.
+</div>
+</main>
+
+
+
+<script src="script.js"></script>
+</body>
+</html>

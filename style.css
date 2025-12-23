@@ -1,0 +1,882 @@
+body{
+    display: flex;
+    padding: 30px;
+    flex-direction: column;
+    background-color: hsl(0, 0%, 100%);
+    box-sizing: border-box;
+    justify-content: center;
+    align-items: center; /* center content horizontally */
+    height: fit-content;
+    padding-top: 50px; 
+     font-family: "Kumbh Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    font-variation-settings:
+      "YOPQ" 300;
+}
+main{
+    /* make main fill available space and center its content */
+     /* vertical centering */
+    justify-content: center; /* horizontal centering */
+    margin-left: auto;
+    margin-right: auto;
+    align-self: center;
+}
+.container{
+    /* center container in the viewport while keeping text left-aligned */
+    display: grid;
+    max-width: 1000px; /* constrain width so it sits centered */
+    width: 100%;
+    grid-template-columns: 1fr 1fr;
+    grid-auto-rows: auto;
+    grid-template-areas: 
+    "nav nav"
+    "cont text"
+    "row 3"
+    ;
+    min-width: 0;
+}
+.nav{
+    display: flex;
+    flex-direction: row;
+    flex: auto;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid hsl(220, 14%, 75%);
+    padding-bottom: 30px;
+    grid-area: nav;
+}
+.nav img{
+    align-self: center;
+    margin-right: 10px;
+}
+.nav .right{
+    display: flex;
+    flex-direction: row;
+}
+.links{
+    align-self: center;
+}
+.nav a{
+    text-decoration: none;
+    color: hsl(219, 9%, 45%);
+    margin-left: 20px; /* space between links */
+    align-self: center;
+    cursor: pointer;
+}
+a.anc{
+   font-weight: 500;
+   font-size: 15px;
+}
+.nav .logo{ order: 2; }
+.nav .menu-btn{ order: 1; }
+.nav .links{ order: 3; }
+/* place nav across both columns */
+.nav .icons{
+    display: flex;
+    gap: 50px;
+    flex-direction: row;
+    margin-left: 50px;
+    align-self: center;
+    cursor: pointer;
+}
+.menu-btn{
+    background: transparent;
+    border: none;
+    padding: 8px;
+    display: none; /* shown via media query */
+    cursor: pointer;
+}
+.menu-btn .icon-menu{ display: block; }
+.menu-btn .icon-close{ display: none; }
+.panel-close{
+    display: none;
+}
+.panel-close{
+    display: none;
+}
+svg.cart{
+    margin-top: 9px;
+}
+img.avatar{
+    width: 40px;
+    height: 40px;
+}
+.nav a:hover{
+    border-bottom: 4px solid hsl(26, 100%, 55%);
+    color: hsl(220, 13%, 13%);
+    padding-bottom: 37px;
+    transition: 200ms ease;
+}
+.nav a.active{
+    border-bottom: 4px solid hsl(26, 100%, 55%);
+    color: hsl(220, 13%, 13%);
+    padding-bottom: 37px;
+    font-weight: 600;
+}
+.cart-count {
+  display: none;
+  background: hsl(26, 100%, 55%);
+  color: white;
+  font-size: 12px;
+  border-radius: 100%;
+  padding: 3px 6px;
+  position: relative;
+  top: -40px;
+  text-align: center;
+  right: -10px;
+}
+img.cart{
+    margin-top: 10px;
+}
+
+
+/* Cart dropdown */
+.cart-dropdown {
+  position: absolute;
+  right: -130px;
+  top: 50px;
+  width: 300px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+  padding: 20px;
+  display: none;
+  z-index: 2000;
+  
+  overflow-y: auto;
+}
+.cart-wrapper {
+  position: relative; /* 🔑 anchor point */
+}
+
+.cart-dropdown.show {
+  display: block;
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+
+/* Cart title */
+.cart-dropdown h3 {
+  font-size: 18px;
+  margin-bottom: 18px;
+  color: hsl(220, 13%, 13%);
+  padding-bottom: 20px;
+  border-bottom: 1px solid hsl(220, 14%, 75%);
+}
+
+/* Cart item layout */
+.cart-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.cart-item img {
+  width: 50px;
+  border-radius: 8px;
+}
+
+/* Text inside cart */
+.cart-item p {
+  margin: 0;
+  font-size: 14px;
+  color: hsl(219, 9%, 45%);
+  font-weight: 400;
+}
+.info p{
+  font-size: 13px;
+  margin: 0;
+  margin-right: 0px;
+  margin-left: 0px;
+}
+img.thumb{
+  width: 50px;
+  height: 50px;
+}
+#cartContent{
+  text-align: center;
+  padding: 15px;
+  font-weight: 700;
+  font-size: 16px;
+  color: hsl(219, 9%, 45%);
+  padding-top: 30px;
+  padding-bottom: 30px;
+  margin-bottom: 10px;
+}
+
+#cartContent img.delete_btn{
+  width: 20px;
+  height: 10px;
+}
+
+.card-item img.delete_btn{
+  width: 20px;
+  height: 10px;
+}
+
+.cart-item p strong {
+  color: #000;
+  font-weight: 700;
+}
+
+/* Delete icon */
+.trash {
+  margin-left: auto;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+/* Checkout button */
+.checkout-btn {
+  margin-top: 20px;
+  width: 100%;
+  background: #ff7d1b;
+  padding: 10px;
+  color: hsl(220, 13%, 13%);
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 16px;
+}
+.checkout-btn:hover {
+  opacity: 0.8;
+}
+.nav svg.active{
+    color: hsl(220, 13%, 13%);
+    border-bottom: 4px solid hsl(26, 100%, 55%);
+    padding-bottom: 37px;
+}
+.icons .avatar:hover{
+    border: 2px solid hsl(26, 100%, 55%);
+    border-radius: 40px;
+}
+.text{
+    grid-area: text;
+    max-width: fit-content;
+    display: block;
+    margin-right: 70px;
+    margin-left: 10px;
+}
+.text h3{
+  margin-top: 50px;
+}
+h3{
+    color: hsl(219, 9%, 45%);
+    font-weight: 700;
+    font-size: 22px;
+}
+h1{
+    font-weight: 700;
+    color: hsl(220, 13%, 13%);
+    font-size: 35px;
+}
+.text p.par{
+    font-weight: 400;
+    font-size: 16px;
+    color: hsl(220, 14%, 75%);
+
+}
+.no{
+    display: flex;
+    flex: auto;
+    flex-direction: row;
+    justify-items: space-between;
+    gap: 30px;
+}
+p.price{
+    font-weight: 700;
+    color: hsl(220, 13%, 13%);
+    font-size: 25px;
+    margin-top: 15px;
+}
+p.percent{
+    font-weight: 700;
+    font-size: 16px;
+    color: hsl(223, 64%, 98%);
+    background-color: hsl(220, 13%, 13%);
+    max-width: fit-content;
+    padding: 4px;
+    padding-left: 7px;
+    padding-right: 7px;
+    border-radius: 5px;
+    margin-bottom: 60px;
+}
+p.cut{
+    text-decoration: line-through;
+    font-weight: 700;
+    font-size: 16px;
+    color: hsl(219, 9%, 45%);
+    margin-top: -40px;
+}
+.select{
+    display: flex;
+    flex-direction: row;
+    flex: auto;
+    justify-items: space-between;
+    gap: 10px;
+    cursor: pointer;
+}
+.counter-box{
+    background-color: hsl(223, 64%, 98%);
+    color: hsl(220, 13%, 13%);
+    padding: 10px;
+    width: 110px;
+    border-radius: 7px;
+    font-weight: 700;
+    font-size: 16px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+img.plus{
+    justify-content: flex-start;
+    align-self: center;
+    justify-self: start;
+}
+.num{
+    justify-content: center;
+    align-self: center;
+}
+img.minus{
+    justify-content: flex-end;
+    align-self: center;
+}
+.btn button.add-btn{
+    background-color: hsl(26, 100%, 55%);
+    width: 230px;
+    padding: 10px;
+    border: none;
+    color: hsl(220, 13%, 13%);
+    text-align: center;
+    border-radius: 7px;
+    font-weight: 700;
+    font-size: 16px;
+    cursor: pointer;
+    padding-top: 7px;
+}
+button svg{
+  margin-right: 5px;
+  margin-bottom: -5px;
+}
+button.btn:hover{
+  opacity: 0.5;
+}
+.row > .column {
+  padding: 0 8px;
+}
+img.del{
+    width: 20px;
+    height: 22px;
+    cursor: pointer;
+   }
+
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+
+.column {
+  float: left;
+}
+.column img{
+    width: 85px;
+    height: 85px;
+    border-radius: 10px;
+    cursor: pointer;
+    background-color: hsl(0, 0%, 100%);
+}
+.column img:hover{
+  opacity: 0.5;
+  background-color: hsl(0, 0%, 100%);
+  color: white;
+  border: none;
+}
+.row{
+    display: flex;
+    flex-direction: row;
+    flex: auto;
+    max-width: fit-content;
+    grid-area: row;
+    justify-content: center;
+    align-content: center;
+    margin-left: 30px;
+}
+
+/* The Modal (background) */
+.modal {
+  display: none;
+  position: fixed;
+
+  padding-top: 100px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: hsla(0, 0%, 0%, 0.75);
+  padding-bottom: 20px;
+  inset: 0; /* top right bottom left = 0 */
+  z-index: 2000;
+}
+
+/* Modal Content */
+.modal-content {
+  position: relative;
+  margin: auto;
+  padding: 0;
+  max-width: fit-content;
+  margin-bottom: 20px;
+  opacity: 1;
+}
+
+/* The Close Button */
+.close {
+  color: white;
+ 
+  font-size: 35px;
+  font-weight: bold;
+}
+.modal .close {
+  position: absolute;
+  top: 50px;     /* slightly outside image */
+  right: 425px;   /* top-right edge */
+  font-size: 32px;
+  color: white;
+  cursor: pointer;
+  z-index: 2100;
+}
+
+.close:hover,
+.close:focus {
+  color: hsl(26, 100%, 55%);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* Hide the slides by default */
+.mySlides {
+  display: none;
+  
+}
+.mySlides img{
+  width: 430px;
+  height: 380px;
+  margin-bottom: 0px;
+  border-radius: 15px;
+}
+img.demo{
+  margin-bottom: 150px;
+  margin-top: 20px;
+  margin-left: 10px;
+}
+
+/* Next & previous buttons */
+.prev,
+.next, .previ, .nexts {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  padding: 16px;
+  margin-top: -50px;
+  color: hsl(220, 13%, 13%);
+  font-size: 20px;
+  transition: 0.6s ease;
+  user-select: none;
+  -webkit-user-select: none;
+  background-color: hsl(0, 0%, 100%);
+  border-radius: 1000px;
+  width: 15px;
+  height: 15px;
+  display: flex;
+  flex-direction: row;
+  flex: auto;
+  align-items: center;
+  justify-items: center;
+}
+.previ, .nexts{
+  display: none;
+}
+
+/* Position the "next button" to the right */
+.next, .nexts {
+  right: 0;
+  margin-right: 0px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover,
+.next:hover, .previ:hover, .nexts:hover {
+  color: hsl(26, 100%, 55%);
+}
+
+/* Number text (1/3 etc) */
+.numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+
+/* Caption text */
+.caption-container {
+  text-align: center;
+  background-color: black;
+  padding: 2px 16px;
+  color: white;
+}
+.column .demo{
+  background-color: hsl(0, 0%, 100%);
+}
+
+.active,
+.column img.active{
+   opacity: 0.5;
+  background-color: hsl(0, 0%, 100%);
+  color: white;
+  border: 1.5px solid hsla(26, 100%, 55%);
+  outline: 1.5px solid hsl(26, 100%, 55%);
+}
+
+img.hover-shadow {
+  transition: 0.3s;
+}
+
+.hover-shadow:hover {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.attribution{
+    color: hsl(220, 13%, 13%);
+    margin-top: 40px;
+    text-align: center;
+    font-size: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    margin-top: 40px;
+}
+.containant {
+  grid-area: cont;
+   margin-top: 40px;
+  margin-bottom: 10px;
+  align-content: flex-end;
+  margin-left: 50px;
+  cursor: pointer;
+}
+
+/* Hide the images by default */
+.mySlide {
+  display: none;
+}
+.mySlide img{
+  width: 370px;
+  height: 370px;
+  border-radius: 15px;
+}
+
+/* Add a pointer when hovering over the thumbnail images */
+.cursor {
+  cursor: pointer;
+}
+.attribution img{
+    width: 20px;
+    margin-bottom: -7px;
+    margin-right: 2px;
+}
+.attribution a{
+    color: hsl(219, 9%, 45%);
+    text-decoration: none;
+    font-weight: bold;
+}
+.every{
+  display: flex;
+  flex-direction: column;
+}
+p, h1, h3 {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  white-space: normal;
+}
+
+@media screen and (max-width: 700px){
+    .container{
+      display: flex;
+      flex-direction: column;
+      flex: auto;
+    }
+    .nav a{
+      font-size: 20px;
+    }
+    img.logo{
+      width: 180px;
+      margin-top: -5px;
+    }
+     img.cart{
+      width: 30px;
+      margin-right: 10px;
+    }
+    a.anc{
+      font-size: 25px;
+      margin-top: 10px;
+    }
+    .nav{
+      margin-right: 30px;
+    }
+    img.avatar{
+      width: 50px;
+      height: 50px;
+      margin-right: 0;
+    }
+    .menu-btn{ 
+        display: inline-flex; align-items: center; margin-left: auto;
+    }
+
+    /* hide the inline links on mobile */
+    .nav .links{ display: none;}
+
+    /* when nav is open, show the panel and swap icons */
+    .nav.open .links{
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+        background: hsl(36, 100%, 99%);
+        position: fixed;
+        top: 0;
+        left: 0; /* always open from the left edge */
+        right: auto !important;
+        height: 2000vh;
+        width: 300px;
+        padding: 60px 30px;
+        text-align: left;
+        box-shadow: -6px 0 20px rgba(0,0,0,0.08);
+        z-index: 3000;
+        transform: none !important;
+    }
+    .nav.open .links a{
+        align-self: flex-start;
+        font-size: 25px;
+    }
+    .nav.open .links a.anc{
+      font-size: 25px;
+    }
+    /* Swap icons */
+    .nav.open .menu-btn .icon-menu{ display: none; }
+    .nav.open .menu-btn .icon-close{ display: block; }
+
+    /* panel close button styling */
+    .panel-close{
+        position: absolute;
+        top: 18px;
+        left: 18px;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        display: none; /* shown when panel open */
+    }
+    .nav.open .panel-close{ display: inline-flex; }
+    .panel-close img{ display: block; }
+
+    /* Make links inside the panel larger for touch */
+    .nav.open .links a{ 
+        font-size: 20px; color: hsl(236, 13%, 42%); font-weight: 400; 
+    }
+    .every{
+      display: flex;
+      flex-direction: row;
+      flex: auto;
+      margin-right: 15px;
+    }
+    .row{
+      display: flex;
+      flex-direction: column;
+      flex: auto;
+     margin-top: 23px;
+    }
+  .row .column{
+    margin-top: 5px;
+  }
+    .containant{
+      margin-left: 0px;
+    }
+    .mySlide img{
+      width: 450px;
+      height: 380px;
+    }
+    .text {
+  max-width: 100%;
+  width: 100%;
+  margin-left: 0px;
+  margin-right: 100px;
+  flex-shrink: 0;
+}
+
+    .select{
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+    }
+    .counter-box{
+      width: 550px;
+      margin-left: 15px;
+    }
+   .btn button.add-btn{
+      width: 570px;
+      margin-left: -80px;
+    }
+    .cut{
+      position: absolute;
+      top: 845px;
+      left: 550px;
+    }
+    p, h1, h3 {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  white-space: normal;
+}
+}
+
+@media screen and (max-width: 500px){
+    .row{
+      display: none;
+    }
+    .mySlide img{
+      width: 670px;
+      border-radius: 0px;
+      margin-left: -10px;
+      margin-right: -40px;
+      margin-top: -40px;
+      height: 500px;
+    }
+   .text {
+  max-width: 100%;
+  width: 100%;
+  margin-left: 0px;
+  margin-right: 0px;
+  }
+  .text p.par{
+    margin-right: 20px;
+    font-size: 25px;
+  }
+  .text h1{
+    font-size: 50px;
+  }
+    body{
+      padding: 0px;
+    }
+    .container{
+      margin: 0px;
+      padding-right: 0px;
+      margin-top: 30px;
+    }
+    main{
+      padding: 0px;
+    }
+    .nav, .text{
+      margin-left: 20px;
+      margin-right: 20px;
+    }
+    .btn button.add-btn{
+      width: 570px;
+      margin-left: -20px;
+      padding-top: 20px;
+      padding-bottom: 20px;
+    }
+    .counter-box{
+      padding-top: 20px;
+      padding-bottom: 20px;
+      margin-left: 20px;
+    }
+    .cut{
+      position: absolute;
+      top: 1060px;
+      left: 520px;
+    }
+    
+    .previ, .nexts{
+      display: flex;
+      position: absolute;
+      top: 70%;
+    }
+    .previ{
+      margin-left: -8px;
+    }
+    .nexts{
+      left: 625px;
+      
+    }
+    .mySlides img{
+      width: 450px;
+      height: 450px;
+    }
+    .modal-content .column{
+      margin-left: 10px;
+    }
+    .cart-dropdown{
+      width: 600px;
+      height: 400px;
+      top: 80px;
+    }
+    .cart-dropdown h3{
+      font-size: 30px;
+    }
+    #cartContent{
+      justify-content: center;
+      margin-top: 80px;
+      font-size: 30px;
+    }
+    button.checkout-btn{
+      margin-top: 30px;
+      font-size: 20px;
+      padding-top: 15px;
+      padding-bottom: 15px;
+    }
+    img.thumb{
+      width: 80px;
+      height: 80px;
+    }
+    .info p{
+      font-size: 25px;
+      margin-right: 20px;
+    }
+   img.del{
+    width: 40px;
+    height: 42px;
+   }
+   .right .links a{
+      font-size: 30px;
+    }
+    img.logo{
+      width: 180px;
+      margin-top: -5px;
+    }
+    img.cart{
+      width: 30px;
+      
+    }
+    img.avatar{
+      width: 50px;
+      height: 50px;
+      margin-right: 0;
+    }
+    .icons{
+      margin-right: 0px;
+    }
+    .link a.anc{
+      font-size: 35px;
+
+      margin-top: 10px;
+    }
+    .nav.open .links a.anc{
+      font-size: 30px;
+    }
+}
