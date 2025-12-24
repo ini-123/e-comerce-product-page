@@ -607,12 +607,27 @@ p, h1, h3 {
   overflow-wrap: break-word;
   white-space: normal;
 }
+.price-selection{
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
 
 @media screen and (max-width: 700px){
     .container{
       display: flex;
       flex-direction: column;
       flex: auto;
+    }
+    .price-section{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-right: 50px;
+}
+    main{
+      padding: 0px;
     }
     .nav a{
       font-size: 20px;
@@ -733,11 +748,7 @@ p, h1, h3 {
       width: 570px;
       margin-left: -80px;
     }
-    .cut{
-      position: absolute;
-      top: 845px;
-      left: 550px;
-    }
+    
     p, h1, h3 {
   word-wrap: break-word;
   overflow-wrap: break-word;
@@ -749,13 +760,20 @@ p, h1, h3 {
     .row{
       display: none;
     }
+    body{
+      padding: 0px;
+    }
+    main{
+      margin-right: auto;
+      margin-left: auto;
+    }
     .mySlide img{
-      width: 670px;
+      width: 770px;
       border-radius: 0px;
       margin-left: -10px;
-      margin-right: -40px;
+      margin-right: -200px;
       margin-top: -40px;
-      height: 500px;
+      height: 600px;
     }
    .text {
   max-width: 100%;
@@ -764,8 +782,9 @@ p, h1, h3 {
   margin-right: 0px;
   }
   .text p.par{
-    margin-right: 20px;
-    font-size: 25px;
+    font-size: 27px;
+    margin-right: -50px;
+    margin-left: 0px;
   }
   .text h1{
     font-size: 50px;
@@ -787,20 +806,16 @@ p, h1, h3 {
     }
     .btn button.add-btn{
       width: 570px;
-      margin-left: -20px;
       padding-top: 20px;
       padding-bottom: 20px;
+      margin-left: 10px;
     }
     .counter-box{
       padding-top: 20px;
       padding-bottom: 20px;
-      margin-left: 20px;
+      margin-left: 50px;
     }
-    .cut{
-      position: absolute;
-      top: 1060px;
-      left: 520px;
-    }
+    
     
     .previ, .nexts{
       display: flex;
@@ -811,7 +826,7 @@ p, h1, h3 {
       margin-left: -8px;
     }
     .nexts{
-      left: 625px;
+      left: 720px;
       
     }
     .mySlides img{
@@ -878,5 +893,30 @@ p, h1, h3 {
     }
     .nav.open .links a.anc{
       font-size: 30px;
+    }
+    .price-section{
+      margin-right: -70px;
+    }
+    p.price{
+      font-size: 30px;
+    }
+    p.percent{
+      font-size: 20px;
+      padding: 6px;
+      padding-left: 10px;
+      padding-right: 10px;
+    }
+    p.cut{
+      font-size: 20px;
+      margin-right: 70px;
+    }
+    .counter-box{
+      font-size: 25px;
+    }
+    .btn button.add-btn{
+      font-size: 25px;
+    }
+    .nav{
+      margin-right: -50px;
     }
 }
